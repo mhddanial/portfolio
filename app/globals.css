@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  /* Border Radius */
+  --radius-lg: 0.5625rem;
+  --radius-md: 0.375rem;
+  --radius-sm: 0.1875rem;
+
+  /* Base Colors */
+  --color-background: hsl(220 15% 6%);
+  --color-foreground: hsl(210 20% 98%);
+  --color-border: hsl(220 15% 16%);
+  --color-input: hsl(220 15% 16%);
+  --color-ring: hsl(250 80% 65%);
+
+  /* Card */
+  --color-card: hsl(220 15% 10%);
+  --color-card-foreground: hsl(210 20% 98%);
+
+  /* Popover */
+  --color-popover: hsl(220 15% 10%);
+  --color-popover-foreground: hsl(210 20% 98%);
+
+  /* Primary - Electric Violet */
+  --color-primary: hsl(250 80% 65%);
+  --color-primary-foreground: hsl(210 20% 98%);
+
+  /* Secondary */
+  --color-secondary: hsl(220 15% 16%);
+  --color-secondary-foreground: hsl(210 20% 98%);
+
+  /* Muted */
+  --color-muted: hsl(220 15% 16%);
+  --color-muted-foreground: hsl(215 20% 65%);
+
+  /* Accent - Cyan */
+  --color-accent: hsl(190 80% 60%);
+  --color-accent-foreground: hsl(220 15% 6%);
+
+  /* Destructive */
+  --color-destructive: hsl(0 62% 30%);
+  --color-destructive-foreground: hsl(210 20% 98%);
+
+  /* Chart Colors */
+  --color-chart-1: hsl(220 70% 50%);
+  --color-chart-2: hsl(160 60% 45%);
+  --color-chart-3: hsl(30 80% 55%);
+  --color-chart-4: hsl(280 65% 60%);
+  --color-chart-5: hsl(340 75% 55%);
+
+  /* Sidebar */
+  --color-sidebar: hsl(220 15% 10%);
+  --color-sidebar-foreground: hsl(210 20% 98%);
+  --color-sidebar-border: hsl(220 15% 16%);
+  --color-sidebar-ring: hsl(250 80% 65%);
+  --color-sidebar-primary: hsl(250 80% 65%);
+  --color-sidebar-primary-foreground: hsl(210 20% 98%);
+  --color-sidebar-accent: hsl(190 80% 60%);
+  --color-sidebar-accent-foreground: hsl(220 15% 6%);
+
+  /* Status Colors */
+  --color-status-online: rgb(34 197 94);
+  --color-status-away: rgb(245 158 11);
+  --color-status-busy: rgb(239 68 68);
+  --color-status-offline: rgb(156 163 175);
+
+  /* Fonts */
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: ui-monospace, monospace;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+
+  ::selection {
+    background-color: hsl(250 80% 65% / 0.3);
+    color: white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply tracking-tight;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@utility text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, white, white, rgb(255 255 255 / 50%));
+}
+
+@utility text-gradient-accent {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, hsl(250 80% 65%), hsl(190 80% 60%), hsl(250 80% 65%));
+}
+
+@utility glass-panel {
+  background-color: hsl(220 15% 6% / 80%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgb(255 255 255 / 10%);
+}
