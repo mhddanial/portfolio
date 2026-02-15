@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import { QueryProvider } from "@/components/providers/query-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-    title: "Portfolio - Global Creative Studio",
-    description: "We craft immersive digital experiences for brands that dare to lead. From strategy to execution, we redefine what's possible.",
+    title: "Dann's Create — Software Engineer Portfolio",
+    description: "Software Engineer crafting thoughtful digital experiences. Explore my projects, skills, and get in touch for collaboration.",
+    keywords: ["software engineer", "web developer", "portfolio", "React", "Next.js", "TypeScript"],
 };
 
 export default function RootLayout({
@@ -16,11 +19,15 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body>
+            <body className="bg-background text-foreground">
                 <QueryProvider>
                     <TooltipProvider>
                         <Toaster />
-                        {children}
+                        <Navigation />
+                        <main className="min-h-screen overflow-x-hidden">
+                            {children}
+                        </main>
+                        <Footer />
                     </TooltipProvider>
                 </QueryProvider>
             </body>

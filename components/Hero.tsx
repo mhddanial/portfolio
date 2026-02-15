@@ -1,72 +1,113 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
+import { AnnotatedText } from "@/components/AnnotatedText";
+import Stack from "@/components/Stack";
+import Image from "next/image";
 
 export default function Hero() {
+    // Replace these with your actual photos
+    const profileCards = [
+        <Image key="1" src="/images/profile-1.jpg" alt="Profile" width={1000} height={1000} className="rounded-lg object-cover pointer-events-none" />,
+        <Image key="2" src="/images/profile-2.jpeg" alt="Profile" width={1000} height={1000} className="rounded-lg object-cover pointer-events-none" />,
+        <Image key="3" src="/images/profile-3.jpg" alt="Profile" width={1000} height={1000} className="rounded-lg object-cover pointer-events-none" />,
+    ];
+
     return (
-        <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-            {/* Video Background */}
-            <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-black/60 z-10" /> {/* Overlay */}
-                <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover"
-                >
-                    <source src="/videos/hero.mp4" type="video/mp4" />
-                </video>
-            </div>
+        <section className="relative min-h-screen w-full overflow-hidden flex items-center bg-background">
+            {/* Dot Grid Texture */}
+            <div className="absolute inset-0 dot-grid-lg opacity-50" />
 
             {/* Content */}
-            <div className="container relative z-20 px-4 md:px-6">
-                <div className="max-w-4xl mx-auto text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                    >
-                        <h2 className="text-sm md:text-base font-mono text-primary mb-6 tracking-widest uppercase">
-                            Global Creative Studio
-                        </h2>
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-display leading-tight tracking-tight mb-8">
-                            Designing the <br />
-                            <span className="text-gradient-accent">Future Digital</span>
+            <div className="container py-24 max-w-7xl mx-auto px-6 relative z-10">
+                <div className="grid md:grid-cols-[1fr_0.7fr] gap-12 md:gap-16 items-center">
+                    {/* Left — Text Content */}
+                    <div className="w-full">
+                        <h1 className="mt-10 text-3xl md:text-5xl font-bold font-display leading-[1.1] tracking-tight mb-6 text-foreground">
+                            Hello! I&apos;m Muhammad Danial,{" "}
+                            <AnnotatedText type="highlight" color="hsla(250, 80%, 65%, 0.15)" strokeWidth={2} animationDelay={500} animationDuration={1000} padding={[2, 6]}>
+                                <span className="text-gradient-accent">Software Developer</span>
+                            </AnnotatedText>{" "}
+                            based in Indonesia.
                         </h1>
-                        <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
-                            We craft immersive digital experiences for brands that dare to lead.
-                            From strategy to execution, we redefine what&apos;s possible.
+
+                        <p className="text-base md:text-md text-muted-foreground leading-relaxed max-w-xl">
+                            I was Informatics Engineering student at Batam State Polytechnic. I have an experience and knowledge in the{" "}
+                            <AnnotatedText type="underline" color="#001219" strokeWidth={1} animationDelay={1400} padding={[4, 6]} className="font-semibold">
+                                Software Engineering & AI Integration
+                            </AnnotatedText>
+                            .
                         </p>
 
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <p className="text-base md:text-md text-muted-foreground mb-4 leading-relaxed max-w-xl">
+                            I love building tools that are user-friendly, performant, and delightful. From full-stack web applications to polished frontends, I focus on{" "}
+                            <AnnotatedText type="highlight" color="hsla(58, 100%, 63%, 0.96)" strokeWidth={2} animationDelay={1800} padding={[4, 6]}>
+                                clean code
+                            </AnnotatedText>{" "}
+                            and modern best practices to solve{" "}
+                            <AnnotatedText type="box" color="#ff006e" strokeWidth={2} animationDelay={2200} padding={[2, 4]}>
+                                real world problems
+                            </AnnotatedText>
+                            .
+                        </p>
+
+                        <p className="text-base md:text-md text-muted-foreground mb-8">
+                            I&apos;m currently looking for new opportunities.{" "}
+                            <a href="/contact" className="text-accent font-medium hover:underline">
+                                Hire me or let&apos;s make some projects?
+                            </a>
+                        </p>
+
+                        {/* CTA Buttons */}
+                        <div className="flex flex-wrap items-center gap-3 mb-8">
                             <a
-                                href="#work"
-                                className="px-8 py-4 bg-primary text-white font-semibold hover:bg-primary/90 transition-all hover:scale-105 w-full sm:w-auto"
+                                href="https://linkedin.com/in/muhammaddanial628"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground text-sm font-semibold rounded-lg hover:bg-primary/85 transition-all hover:scale-[1.02]"
                             >
-                                View Our Work
+                                <Linkedin className="w-4 h-4" />
+                                View LinkedIn
                             </a>
                             <a
-                                href="#contact"
-                                className="px-8 py-4 bg-transparent border border-white/20 text-white font-semibold hover:bg-white/10 transition-all w-full sm:w-auto"
+                                href="https://github.com/mhddanial"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-6 py-3 bg-card border border-border text-foreground text-sm font-semibold rounded-lg hover:bg-secondary transition-all"
                             >
-                                Get in Touch
+                                <Github className="w-4 h-4" />
+                                View Github
+                            </a>
+                            <a
+                                href="mailto:mhd2danial3@gmail.com"
+                                className="inline-flex items-center gap-2 px-6 py-3 bg-card border border-border text-foreground text-sm font-semibold rounded-lg hover:bg-secondary transition-all"
+                            >
+                                <Mail className="w-4 h-4" />
+                                Email
                             </a>
                         </div>
-                    </motion.div>
+                    </div>
+
+                    {/* Right — Photo Stack */}
+                    <div
+                        className="flex items-center justify-center"
+                    >
+                        <div className="w-[280px] h-[350px] md:w-[340px] md:h-[420px] lg:w-[380px] lg:h-[470px] [&>div>div>div]:shadow-[0_12px_30px_rgba(0,0,0,0.15)] [&>div>div>div]:border [&>div>div>div]:border-border/50">
+                            <Stack
+                                cards={profileCards}
+                                sendToBackOnClick
+                                autoplay
+                                autoplayDelay={3000}
+                                pauseOnHover
+                                mobileClickOnly
+                                sensitivity={150}
+                                animationConfig={{ stiffness: 260, damping: 20 }}
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            {/* Scroll Indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, y: [0, 10, 0] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-white/50"
-            >
-                <ArrowDown className="w-6 h-6" />
-            </motion.div>
         </section>
     );
 }

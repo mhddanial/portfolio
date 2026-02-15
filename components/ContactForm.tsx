@@ -8,9 +8,10 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
+import { Loader2, Github, Linkedin, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { z } from "zod";
+import { AnnotatedText } from "@/components/AnnotatedText";
 
 type ContactFormValues = z.infer<typeof insertInquirySchema>;
 
@@ -35,8 +36,14 @@ export default function ContactForm() {
     };
 
     return (
-        <section id="contact" className="py-24 bg-secondary/20 border-t border-white/5">
-            <div className="container mx-auto px-4 md:px-16">
+        <section id="contact" className="py-24 bg-[#FAFAFA] relative">
+            {/* Background texture */}
+            <div className="absolute inset-0 dot-grid opacity-25" />
+
+            {/* Gradient accent */}
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-[#4F46E5] opacity-[0.04] blur-[100px] pointer-events-none" />
+
+            <div className="container max-w-7xl mx-auto px-6 relative z-10">
                 <div className="grid md:grid-cols-2 gap-16 lg:gap-24">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -44,20 +51,49 @@ export default function ContactForm() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2 className="text-4xl md:text-6xl font-bold font-display mb-6">Let&apos;s build something extraordinary.</h2>
-                        <p className="text-xl text-muted-foreground mb-8">
-                            Have a project in mind? We&apos;d love to hear about it. Drop us a line and let&apos;s start a conversation.
+                        <p className="text-sm font-medium text-primary uppercase tracking-widest mb-3">
+                            Contact
+                        </p>
+                        <h2 className="text-4xl md:text-5xl font-bold font-display mb-6 text-foreground leading-tight">
+                            Let&apos;s build something{" "}
+                            <AnnotatedText type="underline" color="#4F46E5" strokeWidth={2} animationDelay={400} animationDuration={1000}>
+                                great together
+                            </AnnotatedText>
+                            .
+                        </h2>
+                        <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                            Have a project in mind or want to collaborate?
+                            I&apos;d love to hear from you. Drop me a message and I&apos;ll get back to you soon.
                         </p>
 
+                        {/* Contact Info */}
                         <div className="space-y-6 mt-12">
                             <div>
-                                <h3 className="text-sm font-mono text-primary uppercase tracking-wider mb-2">Email Us</h3>
-                                <p className="text-lg">hello@studio.design</p>
+                                <h3 className="text-sm font-medium text-primary uppercase tracking-wider mb-2">Email</h3>
+                                <p className="text-lg text-foreground">mhd2danial3@gmail.com</p>
                             </div>
                             <div>
-                                <h3 className="text-sm font-mono text-primary uppercase tracking-wider mb-2">Visit Us</h3>
-                                <p className="text-lg">123 Creative Ave, Design District<br />New York, NY 10013</p>
+                                <h3 className="text-sm font-medium text-primary uppercase tracking-wider mb-2">Location</h3>
+                                <p className="text-lg text-foreground">Batam, Riau Islands, Indonesia</p>
                             </div>
+                        </div>
+
+                        {/* Social Links */}
+                        <div className="flex gap-3 mt-8">
+                            {[
+                                { icon: Github, href: "#", label: "GitHub" },
+                                { icon: Linkedin, href: "#", label: "LinkedIn" },
+                                { icon: Mail, href: "#", label: "Email" },
+                            ].map(({ icon: Icon, href, label }) => (
+                                <a
+                                    key={label}
+                                    href={href}
+                                    aria-label={label}
+                                    className="p-3 rounded-xl border border-border bg-white text-muted-foreground hover:text-accent hover:border-accent transition-all"
+                                >
+                                    <Icon className="w-5 h-5" />
+                                </a>
+                            ))}
                         </div>
                     </motion.div>
 
@@ -66,7 +102,7 @@ export default function ContactForm() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="bg-card p-8 md:p-10 border border-white/10"
+                        className="bg-white p-8 md:p-10 rounded-2xl border border-border shadow-sm"
                     >
                         <Form {...form}>
                             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -75,12 +111,12 @@ export default function ContactForm() {
                                     name="name"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-base">Name</FormLabel>
+                                            <FormLabel className="text-base text-foreground">Name</FormLabel>
                                             <FormControl>
                                                 <Input
-                                                    placeholder="John Doe"
+                                                    placeholder="Your name"
                                                     {...field}
-                                                    className="bg-background/50 border-white/10 focus:border-primary h-12"
+                                                    className="bg-secondary/50 border-border focus:border-accent h-12 rounded-lg"
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -93,13 +129,13 @@ export default function ContactForm() {
                                     name="email"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-base">Email</FormLabel>
+                                            <FormLabel className="text-base text-foreground">Email</FormLabel>
                                             <FormControl>
                                                 <Input
-                                                    placeholder="john@example.com"
+                                                    placeholder="you@example.com"
                                                     type="email"
                                                     {...field}
-                                                    className="bg-background/50 border-white/10 focus:border-primary h-12"
+                                                    className="bg-secondary/50 border-border focus:border-accent h-12 rounded-lg"
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -112,12 +148,12 @@ export default function ContactForm() {
                                     name="message"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-base">Message</FormLabel>
+                                            <FormLabel className="text-base text-foreground">Message</FormLabel>
                                             <FormControl>
                                                 <Textarea
-                                                    placeholder="Tell us about your project..."
+                                                    placeholder="Tell me about your project..."
                                                     {...field}
-                                                    className="bg-background/50 border-white/10 focus:border-primary min-h-[150px] resize-none"
+                                                    className="bg-secondary/50 border-border focus:border-accent min-h-[150px] resize-none rounded-lg"
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -127,7 +163,7 @@ export default function ContactForm() {
 
                                 <Button
                                     type="submit"
-                                    className="w-full h-12 text-base font-semibold bg-primary hover:bg-primary/90"
+                                    className="w-full h-12 text-base font-semibold bg-foreground text-white hover:bg-foreground/85 rounded-lg"
                                     disabled={mutation.isPending}
                                 >
                                     {mutation.isPending ? (
