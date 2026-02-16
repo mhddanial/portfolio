@@ -9,9 +9,9 @@ import Image from "next/image";
 export default function Hero() {
     // Replace these with your actual photos
     const profileCards = [
-        <Image key="1" src="/images/profile-1.jpg" alt="Profile" width={1000} height={1000} className="rounded-lg object-cover pointer-events-none" />,
+        <Image key="1" src="/images/profile-3.jpg" alt="Profile" width={1000} height={1000} className="rounded-lg object-cover pointer-events-none" />,
         <Image key="2" src="/images/profile-2.jpeg" alt="Profile" width={1000} height={1000} className="rounded-lg object-cover pointer-events-none" />,
-        <Image key="3" src="/images/profile-3.jpg" alt="Profile" width={1000} height={1000} className="rounded-lg object-cover pointer-events-none" />,
+        <Image key="3" src="/images/profile-1.jpg" alt="Profile" width={1000} height={1000} className="rounded-lg object-cover pointer-events-none" />,
     ];
 
     return (
@@ -34,7 +34,7 @@ export default function Hero() {
 
                         <p className="text-base md:text-md text-muted-foreground leading-relaxed max-w-xl">
                             I was Informatics Engineering student at Batam State Polytechnic. I have an experience and knowledge in the{" "}
-                            <AnnotatedText type="underline" color="#001219" strokeWidth={1} animationDelay={1400} padding={[4, 6]} className="font-semibold">
+                            <AnnotatedText type="underline" color="#001219" strokeWidth={1} animationDelay={1400} padding={[4, 6]} className="font-bold">
                                 Software Engineering & AI Integration
                             </AnnotatedText>
                             .
@@ -68,7 +68,7 @@ export default function Hero() {
                                 className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground text-sm font-semibold rounded-lg hover:bg-primary/85 transition-all hover:scale-[1.02]"
                             >
                                 <Linkedin className="w-4 h-4" />
-                                View LinkedIn
+                                LinkedIn
                             </a>
                             <a
                                 href="https://github.com/mhddanial"
@@ -77,7 +77,7 @@ export default function Hero() {
                                 className="inline-flex items-center gap-2 px-6 py-3 bg-card border border-border text-foreground text-sm font-semibold rounded-lg hover:bg-secondary transition-all"
                             >
                                 <Github className="w-4 h-4" />
-                                View Github
+                                Github
                             </a>
                             <a
                                 href="mailto:mhd2danial3@gmail.com"
