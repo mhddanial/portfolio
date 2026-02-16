@@ -1,4 +1,6 @@
-import WorkGrid from "@/components/WorkGrid";
+import WorkGrid from "@/components/SelectedWork";
+import { client, projectsQuery } from "@/lib/sanity";
+import type { Project } from "@/lib/sanity";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -6,6 +8,10 @@ export const metadata: Metadata = {
     description: "A curated selection of projects showcasing my skills in full-stack development, frontend engineering, and design.",
 };
 
-export default function ProjectsPage() {
-    return <WorkGrid />;
+export const revalidate = 60;
+
+export default async function ProjectsPage() {
+    const projects: Project[] = await client.fetch(projectsQuery);
+
+    return <WorkGrid projects={projects} />;
 }
