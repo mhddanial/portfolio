@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -20,6 +20,7 @@ export default function Navigation() {
     }, []);
 
     const navLinks = [
+        { name: "Home", href: "/" },
         { name: "About Dann", href: "/about" },
         { name: "Projects", href: "/projects" },
         { name: "Contact", href: "/contact" },
@@ -48,7 +49,7 @@ export default function Navigation() {
                                 href={link.href}
                                 className={`text-sm font-medium transition-colors ${pathname === link.href
                                     ? "text-foreground underline underline-offset-6 decoration-accent decoration-2"
-                                    : "text-muted-foreground hover:text-foreground"
+                                    : "text-muted-foreground hover:text-foreground hover:underline hover:underline-offset-6 hover:decoration-accent hover:decoration-2"
                                     }`}
                             >
                                 {link.name}
@@ -80,27 +81,32 @@ export default function Navigation() {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: "100%" }}
                         transition={{ type: "tween", duration: 0.3 }}
-                        className="fixed inset-0 z-[60] bg-[#FAFAFA] flex flex-col p-8"
+                        className="fixed inset-0 z-60 bg-background flex flex-col p-6"
                     >
                         <div className="flex justify-between items-center mb-12">
-                            <span className="text-2xl font-bold font-display text-foreground">MENU</span>
+                            <Link href="/" className="text-3xl font-bold font-display tracking-tighter text-foreground hover:opacity-70 transition-opacity">
+                                Dann&apos;s Create<span className="text-accent">.</span>
+                            </Link>
                             <button onClick={() => setMobileMenuOpen(false)} className="p-2 text-foreground">
                                 <X className="w-6 h-6" />
                             </button>
                         </div>
                         <div className="flex flex-col space-y-8">
                             {navLinks.map((link) => (
-                                <Link
-                                    key={link.name}
-                                    href={link.href}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className={`text-4xl font-display font-light transition-colors ${pathname === link.href
-                                        ? "text-accent"
-                                        : "text-foreground hover:text-accent"
-                                        }`}
-                                >
-                                    {link.name}
-                                </Link>
+                                <Fragment key={link.name}>
+                                    <Link
+                                        href={link.href}
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        className={`text-3xl font-display font-light transition-colors ${pathname === link.href
+                                            ? "text-accent"
+                                            : "text-foreground hover:text-accent"
+                                            }`}
+                                    >
+                                        {link.name}
+                                    </Link>
+                                    <div className="w-full h-px bg-border"></div>
+                                </Fragment>
+
                             ))}
                         </div>
                     </motion.div>

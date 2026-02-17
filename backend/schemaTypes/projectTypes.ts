@@ -17,6 +17,13 @@ export const projectType = defineType({
             validation: (rule) => rule.required(),
         }),
         defineField({
+            name: 'subtitle',
+            title: 'Subtitle',
+            type: 'text',
+            rows: 2,
+            description: 'One-liner shown below the title on the detail page hero.',
+        }),
+        defineField({
             name: 'category',
             title: 'Category',
             type: 'string',
@@ -32,6 +39,18 @@ export const projectType = defineType({
             validation: (rule) => rule.required(),
         }),
         defineField({
+            name: 'role',
+            title: 'Role',
+            type: 'string',
+            description: 'Your role in this project, e.g. "Lead Developer", "Full-Stack Engineer"',
+        }),
+        defineField({
+            name: 'duration',
+            title: 'Duration',
+            type: 'string',
+            description: 'e.g. "Jan 2025 — Mar 2025" or "3 months"',
+        }),
+        defineField({
             name: 'tech',
             title: 'Tech Stack',
             type: 'array',
@@ -41,8 +60,41 @@ export const projectType = defineType({
         }),
         defineField({
             name: 'image',
+            title: 'Thumbnail Image',
             type: 'image',
             options: { hotspot: true },
+            description: 'Used on project cards (homepage, projects listing).',
+        }),
+        defineField({
+            name: 'heroImage',
+            title: 'Hero Image',
+            type: 'image',
+            options: { hotspot: true },
+            description: 'Full-width cover image on the project detail page. Falls back to thumbnail if empty.',
+        }),
+        defineField({
+            name: 'gallery',
+            title: 'Gallery',
+            type: 'array',
+            of: [
+                {
+                    type: 'image',
+                    options: { hotspot: true },
+                    fields: [
+                        defineField({
+                            name: 'caption',
+                            type: 'string',
+                            title: 'Caption',
+                        }),
+                        defineField({
+                            name: 'alt',
+                            type: 'string',
+                            title: 'Alt Text',
+                        }),
+                    ],
+                },
+            ],
+            description: 'Additional screenshots for the gallery section.',
         }),
         defineField({
             name: 'liveUrl',
@@ -69,8 +121,27 @@ export const projectType = defineType({
         }),
         defineField({
             name: 'body',
+            title: 'Body Content',
             type: 'array',
-            of: [{ type: 'block' }],
+            of: [
+                { type: 'block' },
+                {
+                    type: 'image',
+                    options: { hotspot: true },
+                    fields: [
+                        defineField({
+                            name: 'caption',
+                            type: 'string',
+                            title: 'Caption',
+                        }),
+                        defineField({
+                            name: 'alt',
+                            type: 'string',
+                            title: 'Alt Text',
+                        }),
+                    ],
+                },
+            ],
         }),
     ],
     orderings: [

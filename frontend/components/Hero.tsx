@@ -20,7 +20,7 @@ export default function Hero() {
             <div className="absolute inset-0 dot-grid-lg opacity-50" />
 
             {/* Content */}
-            <div className="container py-24 max-w-7xl mx-auto px-6 relative z-10">
+            <div className="container py-14 md:py-24 max-w-7xl mx-auto px-6 relative z-10">
                 <div className="grid md:grid-cols-[1fr_0.7fr] gap-12 md:gap-16 items-center">
                     {/* Left — Text Content */}
                     <div className="w-full">
@@ -93,7 +93,7 @@ export default function Hero() {
                     <div
                         className="flex items-center justify-center"
                     >
-                        <div className="w-[280px] h-[350px] md:w-[340px] md:h-[420px] lg:w-[380px] lg:h-[470px] [&>div>div>div]:shadow-[0_12px_30px_rgba(0,0,0,0.15)] [&>div>div>div]:border [&>div>div>div]:border-border/50">
+                        <div className="mr-10 w-[280px] h-[350px] md:w-[340px] md:h-[420px] lg:w-[380px] lg:h-[470px] [&>div>div>div]:shadow-[0_12px_30px_rgba(0,0,0,0.15)] [&>div>div>div]:border [&>div>div>div]:border-border/50">
                             <Stack
                                 cards={profileCards}
                                 sendToBackOnClick
