@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/lib/sanity";
 import { urlFor } from "@/lib/sanity";
+import { AnnotatedText } from "@/components/AnnotatedText";
 
 const PROJECTS_PER_PAGE = 6;
 
@@ -43,20 +44,24 @@ export default function ProjectList({ projects }: ProjectListProps) {
     };
 
     return (
-        <section className="pt-32 pb-24 md:pt-40 md:pb-32 bg-white relative min-h-screen">
+        <section className="py-24 md:py-32 bg-white relative min-h-screen">
             <div className="container max-w-7xl mx-auto px-6 relative z-10">
                 {/* Header */}
                 <div className="mb-12">
                     <motion.h1
-                        className="text-3xl md:text-5xl font-bold font-display text-foreground mb-3"
+                        className="text-3xl md:text-5xl font-light font-display text-foreground mb-3"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        All Projects
+                        See {""}
+                        <AnnotatedText type="underline" color="#003049" strokeWidth={4} animationDelay={800} padding={[4, 6]} className="font-bold">
+                            All Projects
+                        </AnnotatedText>
+                        {""} I've Worked On
                     </motion.h1>
                     <motion.p
-                        className="text-muted-foreground max-w-lg text-lg"
+                        className="text-md md:text-lg text-muted-foreground w-full"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
@@ -124,69 +129,60 @@ export default function ProjectList({ projects }: ProjectListProps) {
                                         transition={{ duration: 0.5, delay: index * 0.1 }}
                                         className="group cursor-pointer"
                                     >
-                                        {/* Title + Tech Tags */}
-                                        <div className="flex justify-between items-start">
-                                            <div>
-                                                <h3 className="text-xl md:text-2xl font-semibold font-display mb-2 text-foreground group-hover:text-accent transition-colors">
-                                                    {project.title}
-                                                </h3>
-                                                {project.tech && project.tech.length > 0 && (
-                                                    <div className="flex flex-wrap gap-2 mb-3">
-                                                        {project.tech.map((t) => (
-                                                            <span
-                                                                key={t}
-                                                                className="px-2.5 py-1 text-xs font-medium bg-secondary text-muted-foreground rounded-md border border-border"
-                                                            >
-                                                                {t}
-                                                            </span>
-                                                        ))}
-                                                    </div>
-                                                )}
+                                        <Link href={`/projects/${project.slug.current}`}>
+                                            {/* Title + Tech Tags */}
+                                            <div className="flex justify-between items-start">
+                                                <div>
+                                                    <h3 className="text-xl md:text-2xl font-semibold font-display mb-2 text-foreground group-hover:text-accent transition-colors">
+                                                        {project.title}
+                                                    </h3>
+                                                    {project.tech && project.tech.length > 0 && (
+                                                        <div className="flex flex-wrap gap-2 mb-3">
+                                                            {project.tech.map((t) => (
+                                                                <span
+                                                                    key={t}
+                                                                    className="px-2.5 py-1 text-xs font-medium bg-secondary text-muted-foreground rounded-md border border-border"
+                                                                >
+                                                                    {t}
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                <div className="bg-secondary p-3 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 border border-border">
+                                                    <ArrowUpRight className="w-5 h-5 text-foreground" />
+                                                </div>
                                             </div>
-                                            <div className="bg-secondary p-3 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 border border-border">
-                                                <ArrowUpRight className="w-5 h-5 text-foreground" />
-                                            </div>
-                                        </div>
 
-                                        {/* Image */}
-                                        <div className="relative aspect-4/3 overflow-hidden mb-6 bg-secondary rounded-xl border border-border">
-                                            <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-                                            <motion.div
-                                                whileHover={{ scale: 1.05 }}
-                                                transition={{ duration: 0.6 }}
-                                                className="w-full h-full relative"
-                                            >
-                                                {project.image ? (
-                                                    <Image
-                                                        src={urlFor(project.image).width(800).height(600).url()}
-                                                        alt={project.title}
-                                                        fill
-                                                        sizes="(max-width: 768px) 100vw, 50vw"
-                                                        className="object-cover"
-                                                    />
-                                                ) : (
-                                                    <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                                                        No image
-                                                    </div>
-                                                )}
-                                            </motion.div>
-                                        </div>
+                                            {/* Image */}
+                                            <div className="relative aspect-4/3 overflow-hidden mb-6 bg-secondary rounded-xl border border-border">
+                                                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+                                                <motion.div
+                                                    whileHover={{ scale: 1.05 }}
+                                                    transition={{ duration: 0.6 }}
+                                                    className="w-full h-full relative"
+                                                >
+                                                    {project.image ? (
+                                                        <Image
+                                                            src={urlFor(project.image).width(800).height(600).url()}
+                                                            alt={project.title}
+                                                            fill
+                                                            sizes="(max-width: 768px) 100vw, 50vw"
+                                                            className="object-cover"
+                                                        />
+                                                    ) : (
+                                                        <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                                                            No image
+                                                        </div>
+                                                    )}
+                                                </motion.div>
+                                            </div>
+                                        </Link>
 
                                         {/* Description */}
                                         <p className="text-muted-foreground line-clamp-3 text-sm">
                                             {project.description}
                                         </p>
-
-                                        {/* Read More */}
-                                        <div className="mt-6">
-                                            <Link
-                                                className="w-full flex items-center justify-center gap-2 bg-primary p-2 rounded-md hover:bg-primary/80 transition-colors cursor-pointer"
-                                                href={`/projects/${project.slug.current}`}
-                                            >
-                                                <Logs className="w-3.5 h-3.5 text-primary-foreground" />
-                                                <span className="text-sm font-medium text-primary-foreground">Read More</span>
-                                            </Link>
-                                        </div>
 
                                         {/* Action Links */}
                                         <div className="flex items-center justify-end gap-3 mt-4">
@@ -212,6 +208,17 @@ export default function ProjectList({ projects }: ProjectListProps) {
                                                     Source
                                                 </a>
                                             )}
+                                        </div>
+
+                                        {/* Read More */}
+                                        <div className="mt-6">
+                                            <Link
+                                                className="w-full flex items-center justify-center gap-2 bg-primary p-2 rounded-md hover:bg-primary/80 transition-colors cursor-pointer"
+                                                href={`/projects/${project.slug.current}`}
+                                            >
+                                                <Logs className="w-3.5 h-3.5 text-primary-foreground" />
+                                                <span className="text-sm font-medium text-primary-foreground">Read More</span>
+                                            </Link>
                                         </div>
                                     </motion.div>
                                 ))}

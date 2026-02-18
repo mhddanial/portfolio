@@ -65,63 +65,62 @@ export default function WorkGrid({ projects }: WorkGridProps) {
                                     transition={{ duration: 0.6, delay: index * 0.2 }}
                                     className="group cursor-pointer"
                                 >
-                                    <div className="flex justify-between items-start">
-                                        <div>
-                                            <h3 className="text-xl md:text-2xl font-semibold font-display mb-2 text-foreground group-hover:text-accent transition-colors">
-                                                {project.title}
-                                            </h3>
-                                            {/* <p className="text-muted-foreground text-sm mb-3 font-mono uppercase tracking-wider">
+                                    <Link href={`/projects/${project.slug.current}`}>
+                                        <div className="flex justify-between items-start">
+                                            <div>
+                                                <h3 className="text-xl md:text-2xl font-semibold font-display mb-2 text-foreground group-hover:text-accent transition-colors">
+
+                                                    {project.title}
+                                                </h3>
+                                                {/* <p className="text-muted-foreground text-sm mb-3 font-mono uppercase tracking-wider">
                                             {project.category}
                                         </p> */}
-                                            {/* Tech Stack Tags */}
-                                            {project.tech && project.tech.length > 0 && (
-                                                <div className="flex flex-wrap gap-2 mb-3">
-                                                    {project.tech.map((t) => (
-                                                        <span
-                                                            key={t}
-                                                            className="px-2.5 py-1 text-xs font-medium bg-secondary text-muted-foreground rounded-md border border-border"
-                                                        >
-                                                            {t}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            )}
+                                                {/* Tech Stack Tags */}
+                                                {project.tech && project.tech.length > 0 && (
+                                                    <div className="flex flex-wrap gap-2 mb-3">
+                                                        {project.tech.map((t) => (
+                                                            <span
+                                                                key={t}
+                                                                className="px-2.5 py-1 text-xs font-medium bg-secondary text-muted-foreground rounded-md border border-border"
+                                                            >
+                                                                {t}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div className="bg-secondary p-3 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 border border-border">
+                                                <ArrowUpRight className="w-5 h-5 text-foreground" />
+                                            </div>
                                         </div>
-                                        <div className="bg-secondary p-3 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 border border-border">
-                                            <ArrowUpRight className="w-5 h-5 text-foreground" />
+                                        <div className="relative aspect-4/3 overflow-hidden mb-6 bg-secondary rounded-xl border border-border">
+                                            <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+                                            <motion.div
+                                                whileHover={{ scale: 1.05 }}
+                                                transition={{ duration: 0.6 }}
+                                                className="w-full h-full relative"
+                                            >
+                                                {project.image ? (
+                                                    <Image
+                                                        src={urlFor(project.image).width(800).height(600).url()}
+                                                        alt={project.title}
+                                                        fill
+                                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                                        className="object-cover"
+                                                    />
+                                                ) : (
+                                                    <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                                                        No image
+                                                    </div>
+                                                )}
+                                            </motion.div>
                                         </div>
-                                    </div>
-                                    <div className="relative aspect-4/3 overflow-hidden mb-6 bg-secondary rounded-xl border border-border">
-                                        <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-                                        <motion.div
-                                            whileHover={{ scale: 1.05 }}
-                                            transition={{ duration: 0.6 }}
-                                            className="w-full h-full relative"
-                                        >
-                                            {project.image ? (
-                                                <Image
-                                                    src={urlFor(project.image).width(800).height(600).url()}
-                                                    alt={project.title}
-                                                    fill
-                                                    sizes="(max-width: 768px) 100vw, 50vw"
-                                                    className="object-cover"
-                                                />
-                                            ) : (
-                                                <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                                                    No image
-                                                </div>
-                                            )}
-                                        </motion.div>
-                                    </div>
+                                    </Link>
+
                                     <p className="text-muted-foreground line-clamp-3 text-sm">
                                         {project.description}
                                     </p>
-                                    <div className="mt-6">
-                                        <Link className="w-full flex items-center justify-center gap-2 bg-primary p-2 rounded-md hover:bg-primary/80 transition-colors cursor-pointer" href={`/projects/${project.slug.current}`}>
-                                            <Logs className="w-3.5 h-3.5 text-primary-foreground" />
-                                            <span className="text-sm font-medium text-primary-foreground">Read More</span>
-                                        </Link>
-                                    </div>
+
                                     {/* Action Links */}
                                     <div className="flex items-center justify-end gap-3 mt-4">
                                         {project.liveUrl && (
@@ -146,6 +145,12 @@ export default function WorkGrid({ projects }: WorkGridProps) {
                                                 Source
                                             </a>
                                         )}
+                                    </div>
+                                    <div className="mt-6">
+                                        <Link className="w-full flex items-center justify-center gap-2 bg-primary p-2 rounded-md hover:bg-primary/80 transition-colors cursor-pointer" href={`/projects/${project.slug.current}`}>
+                                            <Logs className="w-3.5 h-3.5 text-primary-foreground" />
+                                            <span className="text-sm font-medium text-primary-foreground">Read More</span>
+                                        </Link>
                                     </div>
                                 </motion.div>
                             ))}

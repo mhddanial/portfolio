@@ -100,7 +100,7 @@ export default async function ProjectDetailPage({
 
             {/* ─── Cover Image ─── */}
             {(project.heroImage || project.image) && (
-                <section className="pb-16 md:pb-20">
+                <section className="pb-8">
                     <div className="container max-w-6xl mx-auto px-6">
                         <div className="relative aspect-video rounded-2xl overflow-hidden border border-border shadow-lg">
                             <Image
@@ -119,12 +119,12 @@ export default async function ProjectDetailPage({
             {/* ─── Meta Bar ─── */}
             <section className="pb-12 md:pb-16">
                 <div className="container max-w-6xl mx-auto px-6">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 md:p-8 bg-secondary/30 rounded-2xl border border-border">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-4 md:p-6 bg-secondary/30 rounded-2xl border border-border">
                         {project.role && (
                             <div className="flex flex-col gap-2">
                                 <div className="flex items-center gap-2 text-muted-foreground">
                                     <User className="w-4 h-4" />
-                                    <span className="text-xs font-medium uppercase tracking-wider">Role</span>
+                                    <span className="text-xs font-semibold uppercase">Role</span>
                                 </div>
                                 <span className="text-sm font-medium text-foreground">{project.role}</span>
                             </div>
@@ -133,7 +133,7 @@ export default async function ProjectDetailPage({
                             <div className="flex flex-col gap-2">
                                 <div className="flex items-center gap-2 text-muted-foreground">
                                     <Clock className="w-4 h-4" />
-                                    <span className="text-xs font-medium uppercase tracking-wider">Duration</span>
+                                    <span className="text-xs font-semibold uppercase tracking-wider">Duration</span>
                                 </div>
                                 <span className="text-sm font-medium text-foreground">{project.duration}</span>
                             </div>
@@ -142,7 +142,7 @@ export default async function ProjectDetailPage({
                             <div className="flex flex-col gap-2">
                                 <div className="flex items-center gap-2 text-muted-foreground">
                                     <Code className="w-4 h-4" />
-                                    <span className="text-xs font-medium uppercase tracking-wider">Tech Stack</span>
+                                    <span className="text-xs font-semibold uppercase tracking-wider">Tech Stack</span>
                                 </div>
                                 <span className="text-sm font-medium text-foreground">
                                     {project.tech.join(" · ")}
@@ -153,7 +153,7 @@ export default async function ProjectDetailPage({
                             <div className="flex flex-col gap-2">
                                 <div className="flex items-center gap-2 text-muted-foreground">
                                     <Calendar className="w-4 h-4" />
-                                    <span className="text-xs font-medium uppercase tracking-wider">Published</span>
+                                    <span className="text-xs font-semibold uppercase tracking-wider">Published</span>
                                 </div>
                                 <span className="text-sm font-medium text-foreground">{formattedDate}</span>
                             </div>
@@ -161,6 +161,8 @@ export default async function ProjectDetailPage({
                     </div>
                 </div>
             </section>
+
+            <div className="max-w-6xl mx-auto h-px bg-border" />
 
             {/* ─── Body Content ─── */}
             {project.body && project.body.length > 0 && (
