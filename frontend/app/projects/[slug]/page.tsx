@@ -123,7 +123,6 @@ export default async function ProjectDetailPage({
                         {project.role && (
                             <div className="flex flex-col gap-2">
                                 <div className="flex items-center gap-2 text-muted-foreground">
-                                    <User className="w-4 h-4" />
                                     <span className="text-xs font-semibold uppercase">Role</span>
                                 </div>
                                 <span className="text-sm font-medium text-foreground">{project.role}</span>
@@ -132,7 +131,6 @@ export default async function ProjectDetailPage({
                         {project.duration && (
                             <div className="flex flex-col gap-2">
                                 <div className="flex items-center gap-2 text-muted-foreground">
-                                    <Clock className="w-4 h-4" />
                                     <span className="text-xs font-semibold uppercase tracking-wider">Duration</span>
                                 </div>
                                 <span className="text-sm font-medium text-foreground">{project.duration}</span>
@@ -141,7 +139,6 @@ export default async function ProjectDetailPage({
                         {project.tech && project.tech.length > 0 && (
                             <div className="flex flex-col gap-2">
                                 <div className="flex items-center gap-2 text-muted-foreground">
-                                    <Code className="w-4 h-4" />
                                     <span className="text-xs font-semibold uppercase tracking-wider">Tech Stack</span>
                                 </div>
                                 <span className="text-sm font-medium text-foreground">
@@ -152,7 +149,6 @@ export default async function ProjectDetailPage({
                         {formattedDate && (
                             <div className="flex flex-col gap-2">
                                 <div className="flex items-center gap-2 text-muted-foreground">
-                                    <Calendar className="w-4 h-4" />
                                     <span className="text-xs font-semibold uppercase tracking-wider">Published</span>
                                 </div>
                                 <span className="text-sm font-medium text-foreground">{formattedDate}</span>
