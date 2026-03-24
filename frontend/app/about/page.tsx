@@ -1,5 +1,4 @@
-import About from "@/components/About";
-import Skills from "@/components/Skills";
+import AboutContent from "@/app/about/AboutContent";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,10 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-    return (
-        <>
-            <About />
-            <Skills />
-        </>
-    );
+    return <AboutContent />;
 }

@@ -18,27 +18,19 @@ export default function WorkGrid({ projects }: WorkGridProps) {
             <div className="container max-w-7xl mx-auto px-6 relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-6">
                     <div>
-                        <motion.h2
+                        <h2
                             className="text-3xl md:text-4xl font-light font-display text-foreground"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5 }}
                         >
                             Some works {""}
                             <AnnotatedText type="highlight" color="hsl(44.016, 100%, 52.157%)" strokeWidth={2} animationDelay={800} padding={[4, 6]}>
                                 <span className="text-foreground font-semibold">I&apos;m proud of</span>
                             </AnnotatedText>
-                        </motion.h2>
-                        <motion.p
+                        </h2>
+                        <p
                             className="text-muted-foreground max-w-md"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.1 }}
                         >
                             Here are some of my best projects I&apos;ve worked on.
-                        </motion.p>
+                        </p>
                     </div>
                     <div className="hidden md:block">
                         <Link
@@ -56,13 +48,9 @@ export default function WorkGrid({ projects }: WorkGridProps) {
                 ) : (
                     <>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                            {projects.map((project, index) => (
-                                <motion.div
+                            {projects.map((project) => (
+                                <div
                                     key={project._id}
-                                    initial={{ opacity: 0, y: 50 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: index * 0.2 }}
                                     className="group cursor-pointer"
                                 >
                                     <Link href={`/projects/${project.slug.current}`}>
@@ -72,9 +60,6 @@ export default function WorkGrid({ projects }: WorkGridProps) {
 
                                                     {project.title}
                                                 </h3>
-                                                {/* <p className="text-muted-foreground text-sm mb-3 font-mono uppercase tracking-wider">
-                                            {project.category}
-                                        </p> */}
                                                 {/* Tech Stack Tags */}
                                                 {project.tech && project.tech.length > 0 && (
                                                     <div className="flex flex-wrap gap-2 mb-3">
@@ -95,9 +80,7 @@ export default function WorkGrid({ projects }: WorkGridProps) {
                                         </div>
                                         <div className="relative aspect-4/3 overflow-hidden mb-6 bg-secondary rounded-xl border border-border">
                                             <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-                                            <motion.div
-                                                whileHover={{ scale: 1.05 }}
-                                                transition={{ duration: 0.6 }}
+                                            <div
                                                 className="w-full h-full relative"
                                             >
                                                 {project.image ? (
@@ -113,7 +96,7 @@ export default function WorkGrid({ projects }: WorkGridProps) {
                                                         No image
                                                     </div>
                                                 )}
-                                            </motion.div>
+                                            </div>
                                         </div>
                                     </Link>
 
@@ -152,7 +135,7 @@ export default function WorkGrid({ projects }: WorkGridProps) {
                                             <span className="text-sm font-medium text-primary-foreground">Read More</span>
                                         </Link>
                                     </div>
-                                </motion.div>
+                                </div>
                             ))}
                         </div>
                         <div className="flex md:hidden justify-center mt-10">

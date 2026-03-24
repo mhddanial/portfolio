@@ -29,7 +29,7 @@ const skills = [
 
 export default function Skills() {
     return (
-        <section className="py-24 bg-[#FAFAFA] border-t border-border relative overflow-hidden">
+        <section className="py-24 border-t border-border relative overflow-hidden">
             {/* Texture */}
             <div className="absolute inset-0 dot-grid opacity-20" />
 
@@ -38,37 +38,26 @@ export default function Skills() {
 
             <div className="container max-w-7xl mx-auto px-6 relative z-10">
                 <div className="text-center mb-16">
-                    <motion.p
+                    <p
                         className="text-sm font-medium text-accent uppercase tracking-widest mb-3"
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
                     >
                         Skills & Expertise
-                    </motion.p>
-                    <motion.h2
+                    </p>
+                    <h2
                         className="text-4xl md:text-5xl font-bold font-display text-foreground"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
                     >
                         My{" "}
                         <AnnotatedText type="underline" color="#4F46E5" strokeWidth={2} animationDelay={300} padding={[2, 4]}>
                             Tech Stack
                         </AnnotatedText>
-                    </motion.h2>
+                    </h2>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {skills.map((skill, index) => (
-                        <motion.div
+                    {skills.map((skill) => (
+                        <div
                             key={skill.category}
                             className="bg-white rounded-2xl border border-border p-6 hover:shadow-md hover:border-accent/30 transition-all duration-300"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: index * 0.1 }}
                         >
                             <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
                                 <skill.icon className="w-5 h-5 text-accent" />
@@ -86,7 +75,7 @@ export default function Skills() {
                                     </span>
                                 ))}
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>
