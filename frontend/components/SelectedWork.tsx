@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowUpRight, ExternalLink, Github, Logs } from "lucide-react";
 import Image from "next/image";
 import type { Project } from "@/lib/sanity";
@@ -14,7 +13,7 @@ interface WorkGridProps {
 
 export default function WorkGrid({ projects }: WorkGridProps) {
     return (
-        <section className="py-24 md:py-32 bg-white relative">
+        <section className="py-16 bg-white relative">
             <div className="container max-w-7xl mx-auto px-6 relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-6">
                     <div>

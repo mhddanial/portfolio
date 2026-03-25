@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Hero from "@/components/Hero";
 import SplashScreen from "@/components/SplashScreen";
 import SelectedWork from "@/components/SelectedWork";
+import AboutPreview from "@/components/AboutPreview";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Project } from "@/lib/sanity";
 
@@ -45,6 +46,7 @@ export default function HomeContent({ projects }: HomeContentProps) {
                 >
                     <Hero />
                     <SelectedWork projects={projects} />
+                    <AboutPreview />
                 </motion.div>
             )}
         </>
