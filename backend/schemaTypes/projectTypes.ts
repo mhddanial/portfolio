@@ -107,7 +107,7 @@ export const projectType = defineType({
             type: 'url',
         }),
         defineField({
-            name: 'publishedAt',
+            name: 'projectDate',
             type: 'datetime',
             initialValue: () => new Date().toISOString(),
             validation: (rule) => rule.required(),
@@ -141,6 +141,7 @@ export const projectType = defineType({
                         }),
                     ],
                 },
+                { type: 'table' },
             ],
         }),
     ],

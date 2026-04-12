@@ -20,7 +20,7 @@ export function urlFor(source: SanityImageSource) {
 // ── GROQ Queries ──
 
 export const projectsQuery = `
-  *[_type == "project"] | order(order asc, publishedAt desc) {
+  *[_type == "project"] | order(order asc, projectDate desc) {
     _id,
     title,
     slug,
@@ -31,7 +31,7 @@ export const projectsQuery = `
     image,
     liveUrl,
     githubUrl,
-    publishedAt
+    projectDate
   }
 `;
 
@@ -56,7 +56,7 @@ export const projectBySlugQuery = `
     },
     liveUrl,
     githubUrl,
-    publishedAt,
+    projectDate,
     order,
     body
   }
@@ -90,7 +90,7 @@ export interface Project {
   image: SanityImageSource | null;
   liveUrl: string | null;
   githubUrl: string | null;
-  publishedAt: string;
+  projectDate: string;
   order?: number;
 }
 

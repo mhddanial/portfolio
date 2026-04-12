@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowLeft, ArrowRight, ExternalLink, Github, Calendar, User, Clock, Code } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, Github } from "lucide-react";
 import {
     client,
     projectBySlugQuery,
@@ -49,8 +49,8 @@ export default async function ProjectDetailPage({
     const adjacent: { prev: AdjacentProject | null; next: AdjacentProject | null } =
         await client.fetch(adjacentProjectsQuery, { currentOrder: project.order ?? 0 });
 
-    const formattedDate = project.publishedAt
-        ? new Date(project.publishedAt).toLocaleDateString("en-US", {
+    const formattedDate = project.projectDate
+        ? new Date(project.projectDate).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
         })
@@ -149,7 +149,7 @@ export default async function ProjectDetailPage({
                         {formattedDate && (
                             <div className="flex flex-col gap-2">
                                 <div className="flex items-center gap-2 text-muted-foreground">
-                                    <span className="text-xs font-semibold uppercase tracking-wider">Published</span>
+                                    <span className="text-xs font-semibold uppercase tracking-wider">Project Date</span>
                                 </div>
                                 <span className="text-sm font-medium text-foreground">{formattedDate}</span>
                             </div>

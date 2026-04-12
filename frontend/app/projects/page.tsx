@@ -4,7 +4,7 @@ import type { Project } from "@/lib/sanity";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Projects — Dann's Create",
+    title: "Dann's Create | Projects",
     description: "A curated selection of projects showcasing my skills in full-stack development, frontend engineering, and design.",
 };
 

@@ -22,24 +22,24 @@ const components: PortableTextComponents = {
             </h4>
         ),
         normal: ({ children }) => (
-            <p className="text-muted-foreground leading-relaxed mb-5 text-base md:text-lg">
+            <p className="text-muted-foreground leading-relaxed mb-5 text-sm md:text-base">
                 {children}
             </p>
         ),
         blockquote: ({ children }) => (
-            <blockquote className="border-l-4 border-accent pl-6 my-8 italic text-muted-foreground text-lg">
+            <blockquote className="border-l-4 border-accent pl-4 my-8 text-muted-foreground text-md md:text-lg ml-4">
                 {children}
             </blockquote>
         ),
     },
     list: {
         bullet: ({ children }) => (
-            <ul className="list-disc pl-6 mb-6 space-y-2 text-muted-foreground text-base md:text-lg">
+            <ul className="list-disc pl-6 mb-6 space-y-2 text-muted-foreground text-sm md:text-base">
                 {children}
             </ul>
         ),
         number: ({ children }) => (
-            <ol className="list-decimal pl-6 mb-6 space-y-2 text-muted-foreground text-base md:text-lg">
+            <ol className="list-decimal pl-6 mb-6 space-y-2 text-muted-foreground text-sm md:text-base">
                 {children}
             </ol>
         ),
@@ -88,6 +88,48 @@ const components: PortableTextComponents = {
                         </figcaption>
                     )}
                 </figure>
+            );
+        },
+        table: ({ value }) => {
+            const rows = value?.rows;
+            if (!rows || rows.length === 0) return null;
+
+            const [headerRow, ...bodyRows] = rows;
+
+            return (
+                <div className="my-8 overflow-x-auto rounded-xl border border-border">
+                    <table className="w-full border-collapse text-sm md:text-base">
+                        <thead>
+                            <tr className="bg-muted/60">
+                                {headerRow.cells.map((cell: string, i: number) => (
+                                    <th
+                                        key={`${headerRow._key}-${i}`}
+                                        className="px-4 py-3 text-left font-semibold text-foreground border-b border-border first:rounded-tl-xl last:rounded-tr-xl"
+                                    >
+                                        {cell}
+                                    </th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {bodyRows.map((row: { _key: string; cells: string[] }) => (
+                                <tr
+                                    key={row._key}
+                                    className="border-b border-border last:border-b-0 transition-colors hover:bg-muted/30"
+                                >
+                                    {row.cells.map((cell: string, i: number) => (
+                                        <td
+                                            key={`${row._key}-${i}`}
+                                            className="px-4 py-3 text-muted-foreground"
+                                        >
+                                            {cell}
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             );
         },
     },

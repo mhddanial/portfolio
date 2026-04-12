@@ -17,7 +17,7 @@ const previewCards = [
     },
     {
         icon: Rocket,
-        title: "Building & Experiment",
+        title: "Building & Product Experiment",
         color: "#f59e0b",
         items: [
             "I like to get my hands dirty — ideas don\u2019t stay in my head for long",
@@ -57,7 +57,7 @@ export default function AboutPreview() {
                     {previewCards.map((card) => (
                         <div
                             key={card.title}
-                            className="rounded-2xl border border-border p-6 md:p-8"
+                            className="rounded-2xl border border-border p-6 md:p-8 bg-white"
                         >
                             {/* Icon + Title */}
                             <div className="flex items-center gap-3 mb-5">
@@ -100,7 +100,7 @@ export default function AboutPreview() {
                                 onMouseLeave={(e) => (e.currentTarget.style.color = "")}
                             >
                                 <span
-                                    className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 bg-primary"
+                                    className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 bg-foreground"
                                 />
                                 Read more
                             </Link>

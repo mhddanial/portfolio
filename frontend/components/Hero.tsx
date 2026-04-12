@@ -35,7 +35,7 @@ export default function Hero() {
                         <p className="text-base md:text-md text-muted-foreground leading-relaxed max-w-xl">
                             I was Informatics Engineering student at Batam State Polytechnic. I have an experience and knowledge in the{" "}
                             <AnnotatedText type="underline" color="#001219" strokeWidth={1} animationDelay={1400} padding={[4, 6]} className="font-bold">
-                                Software Engineering & AI Integration
+                                Software Engineering & AI System
                             </AnnotatedText>
                             .
                         </p>

@@ -8,8 +8,8 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-    title: "Dann's Create — Software Engineer Portfolio",
-    description: "Software Engineer crafting thoughtful digital experiences. Explore my projects, skills, and get in touch for collaboration.",
+    title: "Dann's Create | Software Engineer",
+    description: "Software Engineer crafting thoughtful digital experiDann's Createences. Explore my projects, skills, and get in touch for collaboration.",
     keywords: ["software engineer", "web developer", "portfolio", "React", "Next.js", "TypeScript"],
 };
 
