@@ -23,7 +23,6 @@ export default function Navigation() {
         { name: "Home", href: "/" },
         { name: "About Dann", href: "/about" },
         { name: "Projects", href: "/projects" },
-        { name: "Contact", href: "/contact" },
     ];
 
     return (
@@ -56,7 +55,7 @@ export default function Navigation() {
                             </Link>
                         ))}
                         <Link
-                            href="/contact"
+                            href="mailto:mhd2danial3@gmail.com"
                             className="px-5 py-2.5 text-sm font-semibold bg-foreground text-white rounded-lg hover:bg-foreground/85 transition-all"
                         >
                             Let&apos;s Talk
