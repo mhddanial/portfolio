@@ -17,6 +17,21 @@ export const projectType = defineType({
             validation: (rule) => rule.required(),
         }),
         defineField({
+            name: 'status',
+            title: 'Status',
+            type: 'string',
+            options: {
+                list: [
+                    { title: 'Published', value: 'published' },
+                    { title: 'In Progress', value: 'in_progress' },
+                ],
+                layout: 'radio',
+            },
+            initialValue: 'published',
+            validation: (rule) => rule.required(),
+            description: 'Set to "In Progress" to show the project as a placeholder without a detail page.',
+        }),
+        defineField({
             name: 'subtitle',
             title: 'Subtitle',
             type: 'text',
@@ -156,7 +171,15 @@ export const projectType = defineType({
         select: {
             title: 'title',
             subtitle: 'category',
+            status: 'status',
             media: 'image',
+        },
+        prepare({ title, subtitle, status, media }) {
+            return {
+                title,
+                subtitle: `${subtitle || ''}${status === 'in_progress' ? ' — 🚧 In Progress' : ''}`,
+                media,
+            }
         },
     },
 })

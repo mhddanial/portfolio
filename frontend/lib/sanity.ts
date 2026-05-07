@@ -24,6 +24,7 @@ export const projectsQuery = `
     _id,
     title,
     slug,
+    status,
     category,
     description,
     tech,
@@ -36,10 +37,11 @@ export const projectsQuery = `
 `;
 
 export const projectBySlugQuery = `
-  *[_type == "project" && slug.current == $slug][0] {
+  *[_type == "project" && slug.current == $slug && status != "in_progress"][0] {
     _id,
     title,
     slug,
+    status,
     subtitle,
     category,
     description,
@@ -63,7 +65,7 @@ export const projectBySlugQuery = `
 `;
 
 export const allProjectSlugsQuery = `
-  *[_type == "project"] { "slug": slug.current }
+  *[_type == "project" && status != "in_progress"] { "slug": slug.current }
 `;
 
 export const adjacentProjectsQuery = `{
@@ -83,6 +85,7 @@ export interface Project {
   _id: string;
   title: string;
   slug: { current: string };
+  status: 'published' | 'in_progress';
   category: string;
   description: string;
   tech: string[];
