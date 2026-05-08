@@ -67,7 +67,7 @@ export default function AboutPreview() {
                                 >
                                     <card.icon className="w-6 h-6" style={{ color: card.color }} />
                                 </div>
-                                <AnnotatedText type="underline" color={card.color} strokeWidth={2} animationDelay={800} padding={[4, 6]} className="font-bold">
+                                <AnnotatedText type="underline" color={card.color} strokeWidth={2} animationDelay={1600} padding={[4, 6]} className="font-bold">
                                     <h3
                                         className="text-xl md:text-2xl font-bold font-display"
                                         style={{ color: card.color }}

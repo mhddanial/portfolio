@@ -1,10 +1,11 @@
 "use client";
 
-import { ArrowUpRight, ExternalLink, Github, Logs } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Github, Logs, CircleDashed } from "lucide-react";
 import Image from "next/image";
 import type { Project } from "@/lib/sanity";
 import { urlFor } from "@/lib/sanity";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { AnnotatedText } from "./AnnotatedText";
 
 interface WorkGridProps {
@@ -12,6 +13,8 @@ interface WorkGridProps {
 }
 
 export default function WorkGrid({ projects }: WorkGridProps) {
+    const displayedProjects = projects.slice(0, 4);
+
     return (
         <section className="py-16 bg-white relative">
             <div className="container max-w-7xl mx-auto px-6 relative z-10">
@@ -42,12 +45,12 @@ export default function WorkGrid({ projects }: WorkGridProps) {
                     </div>
                 </div>
 
-                {projects.length === 0 ? (
+                {displayedProjects.length === 0 ? (
                     <p className="text-center text-muted-foreground py-12">No projects yet. Add them in Sanity Studio.</p>
                 ) : (
                     <>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                            {projects.map((project) => {
+                            {displayedProjects.map((project) => {
                                 const isInProgress = project.status === 'in_progress';
 
                                 return (
@@ -62,12 +65,6 @@ export default function WorkGrid({ projects }: WorkGridProps) {
                                                     <h3 className={`text-xl md:text-2xl font-semibold font-display text-foreground ${!isInProgress ? 'group-hover:text-accent transition-colors' : ''}`}>
                                                         {project.title}
                                                     </h3>
-                                                    {isInProgress && (
-                                                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider bg-amber-100 text-amber-700 border border-amber-200 rounded-full whitespace-nowrap">
-                                                            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-                                                            In Progress
-                                                        </span>
-                                                    )}
                                                 </div>
                                                 {project.tech && project.tech.length > 0 && (
                                                     <div className="flex flex-wrap gap-2 mb-3">
@@ -103,6 +100,12 @@ export default function WorkGrid({ projects }: WorkGridProps) {
                                                 <p className="text-muted-foreground line-clamp-3 text-sm">
                                                     {project.description}
                                                 </p>
+                                                <div className="mt-6">
+                                                    <Button variant="secondary" className="w-full justify-center" disabled>
+                                                        <CircleDashed className="w-3.5 h-3.5" />
+                                                        <span className="text-sm font-medium">In Progress</span>
+                                                    </Button>
+                                                </div>
                                             </>
                                         ) : (
                                             <>
