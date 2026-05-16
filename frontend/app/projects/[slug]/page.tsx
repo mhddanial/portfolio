@@ -11,7 +11,7 @@ import {
     urlFor,
 } from "@/lib/sanity";
 import type { ProjectDetail, AdjacentProject } from "@/lib/sanity";
-import PortableTextRenderer from "@/components/PortableTextRenderer";
+import ProjectMediaViewer from "@/components/ProjectMediaViewer";
 
 export const revalidate = 60;
 
@@ -160,45 +160,8 @@ export default async function ProjectDetailPage({
 
             <div className="max-w-6xl mx-auto h-px bg-border" />
 
-            {/* ─── Body Content ─── */}
-            {project.body && project.body.length > 0 && (
-                <section className="pb-16 md:pb-20">
-                    <div className="container max-w-6xl mx-auto px-6">
-                        <PortableTextRenderer value={project.body} />
-                    </div>
-                </section>
-            )}
-
-            {/* ─── Gallery ─── */}
-            {project.gallery && project.gallery.length > 0 && (
-                <section className="pb-16 md:pb-20">
-                    <div className="container max-w-6xl mx-auto px-6">
-                        <h2 className="text-2xl md:text-3xl font-bold font-display text-foreground mb-8">
-                            Gallery
-                        </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {project.gallery.map((img, i) => (
-                                <figure key={img.asset._id || i} className="group">
-                                    <div className="relative aspect-video rounded-xl overflow-hidden border border-border">
-                                        <Image
-                                            src={`${img.asset.url}?w=800&q=85`}
-                                            alt={img.alt || `${project.title} screenshot ${i + 1}`}
-                                            fill
-                                            sizes="(max-width: 768px) 100vw, 50vw"
-                                            className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                        />
-                                    </div>
-                                    {img.caption && (
-                                        <figcaption className="text-sm text-muted-foreground mt-2 text-center italic">
-                                            {img.caption}
-                                        </figcaption>
-                                    )}
-                                </figure>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            )}
+            {/* ─── Body Content and Gallery ─── */}
+            <ProjectMediaViewer body={project.body} gallery={project.gallery} title={project.title} />
 
             {/* ─── Action Links ─── */}
             {(project.liveUrl || project.githubUrl) && (
