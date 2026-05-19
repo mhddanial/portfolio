@@ -137,9 +137,17 @@ export default function ProjectList({ projects }: ProjectListProps) {
                                             <div className="flex justify-between items-start">
                                                 <div>
                                                     <div className="flex items-center gap-2.5 mb-2">
-                                                        <h3 className={`text-xl md:text-2xl font-semibold font-display text-foreground ${!isInProgress ? 'group-hover:text-accent transition-colors' : ''}`}>
-                                                            {project.title}
-                                                        </h3>
+                                                        {!isInProgress ? (
+                                                            <Link href={`/projects/${project.slug.current}`}>
+                                                                <h3 className="text-xl md:text-2xl font-semibold font-display text-foreground group-hover:text-accent transition-colors">
+                                                                    {project.title}
+                                                                </h3>
+                                                            </Link>
+                                                        ) : (
+                                                            <h3 className="text-xl md:text-2xl font-semibold font-display text-foreground">
+                                                                {project.title}
+                                                            </h3>
+                                                        )}
                                                     </div>
                                                     {project.tech && project.tech.length > 0 && (
                                                         <div className="flex flex-wrap gap-2 mb-3">

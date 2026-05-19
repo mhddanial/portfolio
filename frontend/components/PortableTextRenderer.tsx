@@ -17,7 +17,7 @@ export default function PortableTextRenderer({ value, onImageClick }: PortableTe
     const components: PortableTextComponents = {
         block: {
             h2: ({ children }) => (
-                <h2 className="text-2xl md:text-3xl font-bold font-display text-foreground mt-12 mb-4">
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mt-12 mb-4">
                     {children}
                 </h2>
             ),
@@ -27,7 +27,7 @@ export default function PortableTextRenderer({ value, onImageClick }: PortableTe
                 </h3>
             ),
             h4: ({ children }) => (
-                <h4 className="text-lg md:text-xl font-semibold font-display text-foreground mt-8 mb-2">
+                <h4 className="text-lg md:text-xl font-semibold text-foreground mt-8 mb-2">
                     {children}
                 </h4>
             ),

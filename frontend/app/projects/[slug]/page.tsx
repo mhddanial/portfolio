@@ -57,7 +57,7 @@ export default async function ProjectDetailPage({
         : null;
 
     return (
-        <article className="bg-white min-h-screen">
+        <article className="min-h-screen max-w-3xl mx-auto">
             {/* ─── Hero ─── */}
             <section className="pt-24 pb-8 md:pt-32">
                 <div className="container max-w-6xl mx-auto px-6">
@@ -70,9 +70,15 @@ export default async function ProjectDetailPage({
                         Back to Projects
                     </Link>
 
+
+                    {/* Title */}
+                    <h1 className="text-2xl md:text-5xl font-bold font-display text-foreground leading-tight my-4">
+                        {project.title}
+                    </h1>
+
                     {/* Tags */}
                     {project.tech && project.tech.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mt-6">
+                        <div className="flex flex-wrap gap-2 pb-6">
                             {project.tech.map((tag) => (
                                 <span
                                     key={tag}
@@ -84,14 +90,9 @@ export default async function ProjectDetailPage({
                         </div>
                     )}
 
-                    {/* Title */}
-                    <h1 className="text-2xl md:text-5xl font-bold font-display text-foreground leading-tight my-4">
-                        {project.title}
-                    </h1>
-
                     {/* Subtitle */}
                     {project.subtitle && (
-                        <p className="text-xs md:text-base text-muted-foreground w-full leading-relaxed">
+                        <p className="text-sm md:text-base text-muted-foreground w-full leading-relaxed text-justify">
                             {project.subtitle}
                         </p>
                     )}
