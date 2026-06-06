@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ExternalLink, Github, Logs, ChevronLeft, ChevronRight, CircleDashed } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Github, Logs, ChevronLeft, ChevronRight, CircleDashed, Play } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/lib/sanity";
@@ -236,6 +236,17 @@ export default function ProjectList({ projects }: ProjectListProps) {
                                                                 Live Demo
                                                             </a>
                                                         )}
+                                                    {project.demoVideoUrl && (
+                                                        <a
+                                                            href={project.demoVideoUrl}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-foreground transition-colors"
+                                                        >
+                                                            <Play className="w-3.5 h-3.5" />
+                                                            Demo Video
+                                                        </a>
+                                                    )}
                                                         {project.githubUrl && (
                                                             <a
                                                                 href={project.githubUrl}

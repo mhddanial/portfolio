@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, ExternalLink, Github, Logs, CircleDashed } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Github, Logs, CircleDashed, Play } from "lucide-react";
 import Image from "next/image";
 import type { Project } from "@/lib/sanity";
 import { urlFor } from "@/lib/sanity";
@@ -145,6 +145,17 @@ export default function WorkGrid({ projects }: WorkGridProps) {
                                                         >
                                                             <ExternalLink className="w-3.5 h-3.5" />
                                                             Live Demo
+                                                        </a>
+                                                    )}
+                                                    {project.demoVideoUrl && (
+                                                        <a
+                                                            href={project.demoVideoUrl}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-foreground transition-colors"
+                                                        >
+                                                            <Play className="w-3.5 h-3.5" />
+                                                            Demo Video
                                                         </a>
                                                     )}
                                                     {project.githubUrl && (

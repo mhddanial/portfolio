@@ -31,6 +31,7 @@ export const projectsQuery = `
     "imageUrl": image.asset->url,
     image,
     liveUrl,
+    demoVideoUrl,
     githubUrl,
     projectDate
   }
@@ -57,6 +58,7 @@ export const projectBySlugQuery = `
       alt
     },
     liveUrl,
+    demoVideoUrl,
     githubUrl,
     projectDate,
     order,
@@ -92,6 +94,7 @@ export interface Project {
   imageUrl: string | null;
   image: SanityImageSource | null;
   liveUrl: string | null;
+  demoVideoUrl: string | null;
   githubUrl: string | null;
   projectDate: string;
   order?: number;

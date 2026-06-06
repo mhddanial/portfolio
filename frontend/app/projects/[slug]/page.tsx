@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowLeft, ArrowRight, ExternalLink, Github } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, Github, Play } from "lucide-react";
 import {
     client,
     projectBySlugQuery,
@@ -57,7 +57,7 @@ export default async function ProjectDetailPage({
         : null;
 
     return (
-        <article className="min-h-screen max-w-3xl mx-auto">
+        <article className="min-h-screen max-w-4xl mx-auto">
             {/* ─── Hero ─── */}
             <section className="pt-24 pb-8 md:pt-32">
                 <div className="container max-w-6xl mx-auto px-6">
@@ -165,7 +165,7 @@ export default async function ProjectDetailPage({
             <ProjectMediaViewer body={project.body} gallery={project.gallery} title={project.title} />
 
             {/* ─── Action Links ─── */}
-            {(project.liveUrl || project.githubUrl) && (
+            {(project.liveUrl || project.demoVideoUrl || project.githubUrl) && (
                 <section className="pb-16 md:pb-20">
                     <div className="container max-w-6xl mx-auto px-6">
                         <div className="flex flex-wrap gap-4 justify-center">
@@ -178,6 +178,17 @@ export default async function ProjectDetailPage({
                                 >
                                     <ExternalLink className="w-4 h-4" />
                                     View Live Site
+                                </a>
+                            )}
+                            {project.demoVideoUrl && (
+                                <a
+                                    href={project.demoVideoUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-foreground rounded-full font-medium border border-border hover:bg-secondary/80 transition-colors"
+                                >
+                                    <Play className="w-4 h-4" />
+                                    Watch Demo Video
                                 </a>
                             )}
                             {project.githubUrl && (

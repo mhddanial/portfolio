@@ -117,6 +117,12 @@ export const projectType = defineType({
             type: 'url',
         }),
         defineField({
+            name: 'demoVideoUrl',
+            title: 'Demo Video URL',
+            type: 'url',
+            description: 'Optional video walkthrough link from YouTube, Loom, or a similar service.',
+        }),
+        defineField({
             name: 'githubUrl',
             title: 'GitHub URL',
             type: 'url',
